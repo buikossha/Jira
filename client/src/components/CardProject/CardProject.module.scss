@@ -1,0 +1,21 @@
+.project__container{
+  height: 40px;
+  display: flex;
+  align-items: center;
+  margin-left: 40px;
+  margin-right: 160px;
+  border-bottom: 1.5px solid rgb(211, 211, 211);
+
+  p{
+    font-size: 15px;
+    color: grey;
+  }
+
+  .name__suptitle{
+    margin-left: 30px;
+  }
+
+  .type__suptitle{
+    margin-left: 185px;
+  }
+}

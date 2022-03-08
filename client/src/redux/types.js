@@ -1,0 +1,6 @@
+export const SET_NEW_USER = 'SET_NEW_USER'
+export const REMOVE__COOKIE = 'REMOVE__COOKIE'
+
+export const ADD_NEW_PROJECT = 'ADD_NEW_PROJECT'
+export const GET__ALL_PROJECTS = 'GET__ALL_PROJECTS'
+export const GET_CURRENT_PROJECT = 'GET_CURRENT_PROJECT'
