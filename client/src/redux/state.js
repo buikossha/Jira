@@ -2,7 +2,9 @@ const initState = {
   user: null,
   project: [],
   allProjects: [],
-  currentProject: []
+  currentProject: [],
+  task: [],
+  executeTasks: []
 }
 
 

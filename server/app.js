@@ -18,6 +18,7 @@ app.use(cors({ credentials: true, origin: process.env.ORIGIN, sameSite: false })
 
 const googleUserRouter = require('./routes/googleUserRouter')
 const projectRouter = require('./routes/projectRouter')
+const taskRouter = require('./routes/taskRouter')
 
 const sessionConfig = {
   key: 'sid',
@@ -45,7 +46,6 @@ passport.use(
         process.env.GOOGLE_REDIRECT_URL,
     },
     (accessToken, refreshToken, profile, done) => {
-      // console.log(`===> profile = ${JSON.stringify(profile)}`);
       return done(null, profile)
     }
   )
@@ -54,7 +54,7 @@ passport.use(
 
 app.use('/googleUser', googleUserRouter)
 app.use('/project', projectRouter)
-
+app.use('/task', taskRouter)
 
 app.listen(PORT, () => {
   console.log('Server start on port', PORT)

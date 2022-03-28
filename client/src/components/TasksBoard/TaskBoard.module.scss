@@ -1,66 +1,6 @@
 .board__container{
   display: flex;
 
-  .close__section{
-    display: flex;
-    flex-direction: column;
-    width: 35px;
-    height: 92vh;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-
-    p{
-      display: none;
-    }
-    
-    .open__button{
-      width: 25px;
-      height: 25px;
-      border-radius: 50%;
-      border: 1px solid transparent;
-      position: absolute;
-      top: 120px;
-      left: 25px;
-    }
-
-    .open__button:hover{
-      cursor: pointer;
-    }
-
-    .close__button{
-      display: none;
-    }
-
-  }
-  .open__section{
-   display: flex;
-   flex-direction: column;
-   width: 185px;
-   height: 92vh;
-   box-shadow: 0 0 10px rgba(0,0,0,0.1);
-
-   .open__button{
-     display: none;
-   }
-
-   .close__button{
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    border: 1px solid transparent;
-    position: absolute;
-    top: 127px;
-    left: 175px;
-   }
-
-   .close__button:hover{
-     cursor: pointer;
-   }
-
-   p{
-     margin: 12px;
-   }
-  }
-
   .board__info__section{
     display: flex;
     flex-direction: column;
@@ -104,15 +44,11 @@
       background-color: rgb(239, 241, 243);
       padding: 14px 14px 30px 14px;
 
-      .inner__wrapper{
-        display: flex;
-        justify-content: space-between;
-
         p{
           color: grey;
           font-size: 12px;
+          margin-bottom: 25px;
         }
-      }
 
       .add__button{
         margin-top: 20px;
@@ -148,14 +84,10 @@
       background-color: rgb(239, 241, 243);
       padding: 14px 14px 5px 14px;
 
-      .inner__wrapper{
-        display: flex;
-        justify-content: space-between;
-
-        p{
-          color: grey;
-          font-size: 12px;
-        }
+      p{
+        color: grey;
+        font-size: 12px;
+        margin-bottom: 25px;
       }
 
       .add__button{

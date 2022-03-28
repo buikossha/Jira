@@ -4,7 +4,9 @@ import Navbar from '../Navbar/Navbar'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCurrentProjectAction } from '../../redux/actions/projectAction'
 import { useHistory, useParams } from 'react-router'
-import { } from 'react-router-dom'
+import { addNewTaskAction, getExecuteTasksAction } from '../../redux/actions/taskAction'
+import TaskForm from '../TaskForm/TaskForm'
+
 
 function TasksBoard() {
 
@@ -14,8 +16,12 @@ function TasksBoard() {
   const { id } = useParams()
 
   const project = useSelector(state => state.project)
-
   const currentProject = useSelector(state => state.currentProject)
+  const task = useSelector(state => state.task)
+  const executeTasks = useSelector(state => state.executeTasks)
+  console.log(executeTasks);
+
+  const [newTask, setNewTask] = useState('')
 
   useEffect(() => {
     if (project) {
@@ -23,21 +29,9 @@ function TasksBoard() {
     }
   }, [project])
 
-  const [openSection, setOpenSection] = useState({
-    sectionStyle: 'close__section',
-  })
-
-  const openClick = () => {
-    setOpenSection({
-      sectionStyle: 'open__section',
-    })
-  }
-
-  const closeClick = () => {
-    setOpenSection({
-      sectionStyle: 'close__section',
-    })
-  }
+  useEffect(() => {
+    dispatch(getExecuteTasksAction(id))
+  }, [task])
 
   const allProjectsClick = () => {
     history.push('/allProjects')
@@ -53,7 +47,13 @@ function TasksBoard() {
     })
   }
 
+
+  const handleChange = (e) => {
+    setNewTask(e.target.value)
+  }
+
   const addTaskClick = () => {
+    dispatch(addNewTaskAction(newTask, id))
     setOpenInput({
       style: 'make__task__section'
     })
@@ -63,11 +63,6 @@ function TasksBoard() {
     <>
       <Navbar />
       <div className={style.board__container}>
-        <div className={style[openSection.sectionStyle]}>
-          <button className={style.open__button} onClick={openClick}>o</button>
-          <button className={style.close__button} onClick={closeClick}>c</button>
-        </div>
-
 
         <div className={style.board__info__section}>
           <p className={style.project__suptitle} onClick={allProjectsClick}>Проекты</p>
@@ -77,11 +72,10 @@ function TasksBoard() {
           <div className={style.sections__wrapper}>
 
             <div className={style[openInput.style]}>
-              <div className={style.inner__wrapper}>
-                <p>К ВЫПОЛНЕНИЮ</p>
-              </div>
+              <p>К ВЫПОЛНЕНИЮ</p>
+              {executeTasks?.map((el) => <TaskForm {...el} key={el.id} projectName={currentProject.name}/>)}
               <button className={style.add__button} onClick={addNewTaskClick}> Создать задачу</button>
-              <textarea name="name" placeholder="Что нужно сделать?"></textarea>
+              <textarea onChange={handleChange} name="name" placeholder="Что нужно сделать?"></textarea>
               <button onClick={addTaskClick} className={style.add__task__button}>+</button>
             </div>
 
@@ -94,7 +88,6 @@ function TasksBoard() {
             </div>
 
           </div>
-
         </div>
       </div>
     </>
