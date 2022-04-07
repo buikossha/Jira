@@ -19,7 +19,6 @@ function TasksBoard() {
   const currentProject = useSelector(state => state.currentProject)
   const task = useSelector(state => state.task)
   const executeTasks = useSelector(state => state.executeTasks)
-  console.log(executeTasks);
 
   const [newTask, setNewTask] = useState('')
 
@@ -32,6 +31,7 @@ function TasksBoard() {
   useEffect(() => {
     dispatch(getExecuteTasksAction(id))
   }, [task])
+
 
   const allProjectsClick = () => {
     history.push('/allProjects')
@@ -73,10 +73,12 @@ function TasksBoard() {
 
             <div className={style[openInput.style]}>
               <p>К ВЫПОЛНЕНИЮ</p>
-              {executeTasks?.map((el) => <TaskForm {...el} key={el.id} projectName={currentProject.name}/>)}
+              {executeTasks?.map((el) => <TaskForm {...el} key={el.id} projectName={currentProject.name} />)}
               <button className={style.add__button} onClick={addNewTaskClick}> Создать задачу</button>
-              <textarea onChange={handleChange} name="name" placeholder="Что нужно сделать?"></textarea>
-              <button onClick={addTaskClick} className={style.add__task__button}>+</button>
+              <div className={style.needed__wrapper}>
+                <textarea onChange={handleChange} name="name" placeholder="Что нужно сделать?"></textarea>
+                <button onClick={addTaskClick} className={style.add__task__button}>+</button>
+              </div>
             </div>
 
             <div className={style.in__work__section}>

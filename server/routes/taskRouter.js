@@ -25,4 +25,15 @@ router.get('/getExecute:id', async (req, res) => {
   }
 })
 
+router.delete('/delete:id', async (req, res) => {
+  const { id } = req.params
+  try {
+    await Task.destroy({ where: { id } })
+    return res.sendStatus(200)
+  } catch (err) {
+    console.log(err);
+    return res.sendStatus(500).end()
+  }
+})
+
 module.exports = router

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ADD_NEW_TASK, GET_EXECUTE_TASK } from "../types";
+import { ADD_NEW_TASK, DELETE_TASK, GET_EXECUTE_TASK } from "../types";
 
 export const addNewTaskAction = (newTaskInfo, id) => async (dispatch) => {
   try {
@@ -28,6 +28,18 @@ export const getExecuteTasksAction = (id) => async (dispatch) => {
   }
 }
 
+export const deleteTaskAction = (id) => async (dispatch) => {
+  try {
+    await axios({
+      method: 'delete',
+      url: `http://localhost:3001/task/delete${id}`
+    })
+    dispatch(setDeleteTaskAction(id))
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 export const setNewTaskAction = (newTask) => ({
   type: ADD_NEW_TASK,
   payload: newTask
@@ -36,4 +48,9 @@ export const setNewTaskAction = (newTask) => ({
 export const setExecuteTasksAction = (executeTasks) => ({
   type: GET_EXECUTE_TASK,
   payload: executeTasks
+})
+
+export const setDeleteTaskAction = (id) => ({
+  type: DELETE_TASK,
+  payload: { id }
 })

@@ -94,6 +94,8 @@
         display: none;
       }
 
+      .needed__wrapper{
+        position: relative;
       textarea{
         margin-top: 20px;
         width: 285px;
@@ -107,7 +109,21 @@
 
       .add__task__button{
         position: absolute;
+        width: 20px;
+        height: 20px;
+        top: 29px;
+        left: 268px;
+        border: 1px solid rgb(211, 211, 211) !important;
+        background-color: white;
+        border-radius: 4px;
+        color: grey;
       }
+
+      .add__task__button:hover{
+        cursor: pointer;
+        background-color: rgb(211, 211, 211);
+      }
+    }
     }
 
     .in__work__section{

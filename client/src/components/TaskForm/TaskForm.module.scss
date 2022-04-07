@@ -1,9 +1,11 @@
 .container{
+  position: relative;
   margin-top: 5px;
   width: 300px;
   height: 60px;
   background-color: white;
   border-radius: 3px;
+  border: 0.6px solid rgb(230, 230, 230);
   
   .form__name{
     margin: 0 0 16px 10px !important;
@@ -15,8 +17,64 @@
     margin-left: 10px;
   }
 
+  .form__button{
+    display: none;
+  }
+
+  .settings__hidden{
+    display: none;
+  }
+
+  .settings__visible{
+    z-index: 1;
+    position: absolute;
+    top: 40px;
+    left: 114px;
+    display: flex;
+    width: 180px;
+    height: 160px;
+    background-color: white;
+    border-radius: 4px;
+    border: 0.6px solid rgb(230, 230, 230);
+    flex-direction: column;
+
+    .title__settings{
+      text-transform: uppercase;
+      margin: 13px 0 0 10px !important;
+    }
+    
+    .settings{
+      text-transform: uppercase;
+      color: black !important;
+      margin: 8px 0 0 10px !important;
+    }
+
+    .settings:hover{
+      cursor: pointer;
+    }
+  }
 }
 
 .container:hover{
-  background-color: rgb(230, 230, 230);
+  transition: 0.1s;
+  background-color: #eff1f3;
+
+  .form__button{
+    display: block;
+    position: absolute;
+    top: 6px;
+    left: 267px;
+    width: 27px;
+    height: 27px;
+    font-size: 20px;
+    border: 0.1px solid transparent;
+    border-radius: 4px;
+    background-color: rgb(230, 230, 230);
+    cursor: pointer;
+    opacity: 0.6;
+  }
+
+  .form__button:hover{
+    background-color: rgb(219, 221, 233);
+  }
 }

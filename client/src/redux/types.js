@@ -7,3 +7,4 @@ export const GET_CURRENT_PROJECT = 'GET_CURRENT_PROJECT'
 
 export const ADD_NEW_TASK = 'ADD_NEW_TASK'
 export const GET_EXECUTE_TASK = 'GET_EXECUTE_TASK'
+export const DELETE_TASK = 'DELETE_TASK'
